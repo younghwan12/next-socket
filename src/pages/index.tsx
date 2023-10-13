@@ -1,11 +1,20 @@
-import { Button } from "antd"
+import React, { useEffect } from "react"
+import { useAppSelector } from "@/redux/hooks"
 import { useRouter } from "next/router"
-import React from "react"
-// import { MainContainer } from "@/features/main/component"
 
-const MainPage = () => {
-  const { push } = useRouter()
-  return <Button onClick={() => push("/login")}>로그인</Button>
+const IndexPage = () => {
+  const { token } = useAppSelector(({ login }) => login)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (token !== undefined) {
+      router.push("/sapp")
+    } else {
+      router.push("/login")
+    }
+  }, [token])
+
+  return <></>
 }
 
-export default MainPage
+export default IndexPage

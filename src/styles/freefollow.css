@@ -1,0 +1,109 @@
+.novalidate.novalidateFirst {
+  padding-bottom: 0;
+}
+.novalidate .messagevalue {
+  cursor: pointer;
+}
+
+.novalidate .messagevalue input[type="radio"] {
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  background-image: url(../styles/Icons/ico_radio_circle_off.svg);
+  background-position: center;
+  vertical-align: middle;
+}
+.novalidate .messagevalue input[type="radio"]:checked {
+  background-image: url(../styles/Icons/ico_radio_circle_on.svg);
+}
+
+.novalidate .wrap-inp.wrap-inpToggle > div {
+  /* margin-bottom: 24px; */
+  font-weight: bold;
+  /* line-height: 30px; */
+}
+.view-content-box .novalidate h2 {
+  padding-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.view-content-box .novalidate h3 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 30px;
+  padding-top: 16px;
+}
+.view-content-box .novalidate h3.msgTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-content-box .novalidate b {
+  line-height: 20px;
+  font-size: 16px !important;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+/* .novalidate .wrap-inp > b {
+  margin-bottom: 8px;
+} */
+.novalidate .freeInpText {
+  width: 100%;
+  /* width: 568px; */
+  height: 48px;
+  padding: 13px 16px;
+
+  border: 1px solid var(--color-gray);
+  box-sizing: border-box;
+  border-radius: 8px;
+  /* margin-bottom: 16px; */
+  font-size: 14px;
+  color: #000;
+}
+.novalidate div.freeInpText {
+  margin-bottom: 40px;
+}
+
+.novalidate .messagevalue input[type="radio"] {
+  margin: -2px 8px 0px 0px;
+}
+.novalidate .payFreeMsg {
+  margin-bottom: 40px;
+}
+.novalidate
+  .payFreeMsg
+  .group_small_box_in:nth-of-type(3)
+  input[type="number"] {
+  background-image: url(../styles/Icons/inputMsgIcon.svg);
+  background-size: 16px;
+  background-position: left 20px center;
+  padding-left: 40px;
+}
+.novalidate
+  .payFreeMsg
+  .group_small_box_in:nth-of-type(3)
+  input[type="number"]:focus {
+  background-image: none;
+}
+.novalidate
+  .payFreeMsg
+  .group_small_box_in:nth-of-type(2)
+  input[type="number"] {
+  background-image: url(../styles/Icons/inputMsgIcon02.svg);
+  background-size: 16px;
+  background-position: left 20px center;
+  padding-left: 40px;
+}
+.novalidate
+  .payFreeMsg
+  .group_small_box_in:nth-of-type(2)
+  input[type="number"]:focus {
+  background-image: none;
+}
+.divideLine {
+  width: 100%;
+  height: 12px;
+  background-color: #efeff4;
+  border: 0;
+  opacity: 1;
+}

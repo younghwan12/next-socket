@@ -1,0 +1,54 @@
+.app-flex-box {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  min-height: 100%;
+  position: relative;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  .left-menu-view {
+    /* width: 22.9%; */
+    display: flex;
+    flex-direction: column;
+    /* flex-grow: 1; */
+    flex-shrink: 0;
+    flex-basis: auto;
+    align-items: flex-end;
+    /* border-right: 1px solid #e6e6e6; */
+    .bar-width {
+      display: flex;
+      flex-direction: column;
+      width: 275px;
+      align-items: stretch;
+    }
+    .left-content-wrapper {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      display: flex;
+      flex-flow: column;
+      .left-content-box {
+        border-right: 1px solid var(--color-bars-light-gray);
+        height: 100%;
+        .left-item-list {
+          padding: 0px 24px 8px 16px !important;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      .bar-width {
+        display: flex;
+        flex-direction: column;
+        width: 275px;
+        align-items: stretch;
+      }
+    }
+    .profile-container {
+      width: 100%;
+      padding: 0 12px;
+      margin: 16px 0;
+    }
+  }
+}

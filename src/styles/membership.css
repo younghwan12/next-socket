@@ -1,0 +1,455 @@
+.op1 {
+  opacity: 1;
+}
+
+.op03 {
+  opacity: 0.3;
+}
+.membership-container {
+  padding-bottom: 100px;
+}
+.membership-container .membership {
+  /* margin: 22px 24px 24px; */
+}
+
+.membership .plan {
+  position: relative;
+  /* margin: 16px 24px 0; 프로필 > 멤버십 탭 */
+  margin: 15px;
+  padding: 24px;
+  background: var(--color-lighttest-gray);
+  /* border: 1px solid #f2f2f2; */
+  border-radius: 16px;
+  /* margin-left: 24px; */
+  /* display: inline-block; */
+  font-size: 22px;
+  color: #000;
+  font-weight: 700;
+  /* margin-bottom: 38px; */
+}
+
+.membership .plan .free {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-gray);
+}
+.planContainer {
+  padding-bottom: 60px;
+}
+/* .membership .plan:first-of-type {
+  margin-top: 24px;
+} */
+
+/* .membership .plan .count-member {
+  display: block;
+  color: #878787;
+} */
+
+.membership .plan .count-member {
+  display: inline-block;
+  position: absolute;
+  right: 16px;
+  padding: 10px 16px;
+  border: 1px solid #d2d5db;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #000000;
+}
+
+.membership .plan .count-member i {
+  color: #595959;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.membership .plan h5 {
+  /* color: #ff424d; */
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.membership .plan h5.free {
+  color: #393939;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+.v-application ol,
+.v-application ul {
+  padding-left: 24px;
+}
+
+.membership .plan .benefit {
+  margin-top: 16px;
+}
+
+fieldset,
+img,
+input,
+li,
+textarea {
+  border: 0;
+  vertical-align: top;
+}
+
+.membership .plan .benefit li {
+  font-size: 16px;
+  line-height: 24px;
+  list-style: disc;
+}
+
+/* .membership .plan .benefit li:before {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 11px 8px 0 0;
+  border-radius: 50%;
+  background: #595959;
+  vertical-align: top;
+  content: "";
+} */
+
+.membership .plan .go-public {
+  display: block;
+  color: #878787;
+}
+
+.membership .plan .go-public {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #110f1a;
+  line-height: 140%;
+  color: #b3b3b3;
+}
+
+.membership .plan .go-public + .count-member {
+  margin-top: 4px;
+}
+
+.plan-description {
+  margin-top: 16px;
+  padding: 24px;
+  background: #f9f9f9;
+  border: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.inner {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.v-application ol,
+.v-application ul {
+  padding-left: 24px;
+}
+
+.v-application .mt-2 {
+  margin-top: 8px !important;
+}
+
+.plan-description ul {
+  list-style: disc;
+}
+
+.plan-description li {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px !important;
+  /* color: #110f1a !important; */
+  line-height: 24px;
+}
+
+/* .tit-membership {
+  word-break: break-word;
+} */
+
+.membership .plan h5 .tit-membership {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 16px;
+  /* color: #fb7268; */
+  color: var(--color-main);
+}
+
+.plan-description p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px !important;
+  color: #110f1a !important;
+  margin: 0;
+}
+
+.plan-btn-wrapper {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* 구독만료된 멤버십 */
+
+.subscriber .item {
+  overflow: hidden;
+  position: relative;
+  padding: 22px 0px 0px 0px;
+  /* border-bottom: 8px solid #f2f2f2; */
+  border: 1px solid var(--color-light-gray);
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.subscriber .fan {
+  position: relative;
+  height: 60px;
+  margin: 0 16px;
+  padding-left: 40px;
+}
+
+.v-application p {
+  margin-bottom: 16px;
+}
+
+.ico-photo,
+.thmb-prf {
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.subscriber .fan .ico-photo,
+.subscriber .fan .thmb-prf {
+  position: absolute;
+  /* top: 7px; */
+  left: 0;
+  /* width: 32px; */
+  /* height: 32px; */
+
+  /* top: 3px; */
+  left: 20px;
+  width: 45px;
+  height: 45px;
+}
+
+.subscriber.fan .name {
+  max-width: 100% !important;
+}
+
+.subscriber .fan .name {
+  position: relative;
+  display: block;
+  max-width: calc(100% - 50px);
+  padding-top: 4px;
+}
+
+.subscriber .fan .nickName[data-v-d8552a1e] {
+  font-weight: 500;
+  color: #110f1a;
+}
+
+.subscriber .fan .id,
+.subscriber .fan .nickName[data-v-d8552a1e] {
+  font-style: normal;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.subscriber .fan .name .id[data-v-d8552a1e] {
+  position: absolute;
+  top: 27px;
+  left: 0;
+  width: 80%;
+  color: #878787;
+  font-size: 12px;
+}
+
+.subscriber .fan .id[data-v-d8552a1e],
+.subscriber .fan .nickName[data-v-d8552a1e] {
+  font-style: normal;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.subscriber .wrap-info {
+  margin: 0 1px;
+  padding: 15px 20px;
+  border-top: 1px solid var(--color-light-gray);
+}
+.plan_infoBox {
+  display: flex;
+  justify-content: space-between;
+  height: 18px;
+}
+.plan_infoBox .title-label {
+  width: calc(100% - 180px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 18px;
+}
+.plan_infoBox .plan_infoBox_planin {
+  width: 180px;
+  text-align: right;
+}
+.plan_infoBox .plan_infoBox_planin > div {
+  display: inline-block;
+  width: 45%;
+  height: 18px;
+  line-height: 18px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.v-application .justify-space-between {
+  justify-content: space-between !important;
+}
+
+.title-label {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.wrap-info .title-label,
+.wrap-info .value-label {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px !important;
+  color: #110f1a;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+.payment_con .item .name .id {
+  display: none;
+}
+.payment_con .item .name .nickName {
+  margin-top: 10px;
+}
+.value-label {
+  font-weight: 700 !important;
+  margin: 0 0 0 8px;
+  text-align: right;
+  word-break: break-all;
+  display: inline-block;
+}
+
+.subscriber .wrap-info .date,
+.subscriber .wrap-info .plan {
+  position: relative;
+  padding-top: 1px;
+  color: #595959;
+}
+
+.subscriber .wrap-info .date {
+  margin-bottom: 28px;
+  padding-top: 15px;
+}
+
+.subscriber .wrap-info .date span,
+.subscriber .wrap-info .plan span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% - 100px);
+  color: #212121;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.subscriber .wrap-info .date span {
+  top: 13px;
+  display: inline-block;
+  width: 100%;
+}
+
+.btn-bk {
+  margin: 16px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  /* color: #110f1a; */
+  line-height: 140%;
+  /* background: #141414; */
+  background: var(--color-gray);
+  color: #fff !important;
+  text-align: center;
+}
+.btn-bk:hover {
+  background-color: var(--color-main-hover);
+  color: #fff;
+}
+/* 내멤버십 관리 메뉴 */
+
+/* .left-item-list .membershipMenu li:nth-of-type(1) span {
+  background-image: url(../styles/Icons/leftIcon01.svg);
+} */
+
+.membershipMenu li span img {
+  line-height: 48px;
+  opacity: 0;
+}
+.membershipMenu li.active span img {
+  opacity: 1;
+}
+
+.left-item-list .membershipMenu li:nth-of-type(2) span {
+  background-image: url(../styles/Icons/leftdrawer_subscriber_off.svg);
+}
+.left-item-list .membershipMenu li:nth-of-type(3) span {
+  background-image: url(../styles/Icons/leftdrawer_membership_off.svg);
+}
+.left-item-list .membershipMenu li:nth-of-type(4) span {
+  background-image: url(../styles/Icons/leftdrawer_purchase_off.svg);
+}
+.left-item-list .membershipMenu li:nth-of-type(5) span {
+  background-image: url(../styles/Icons/leftdrawer_revenue_off.svg);
+}
+
+/* 플랜 수정하기 QQ고급회원  */
+.novalidate .wrap-inp > input.planPrice {
+  background-image: url(../styles/Icons/coin_4_p.svg);
+  background-position: left 16px center;
+  background-size: 16px;
+  padding-left: 36px;
+  font-weight: 600;
+}
+
+.wrap-inp .MegTgl {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrap-inp .MegTgl .MegTglTitle h3 {
+  line-height: 22px;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.wrap-inp.mb40 .MegTgl {
+  margin-bottom: 40px;
+}
+/* .wrap-inp .toggle_box {
+  display: inline-block;
+} */
+.wrap-inp > .PlanPageBtn {
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  background-color: rgb(255, 245, 246);
+  margin: 0;
+}
+.wrap-inp .PlanPageBtn .submitBtn {
+  margin: 0;
+  float: right;
+}
+.wrap-inp .PlanPageBtn .submitBtn:nth-of-type(1) {
+  margin-right: 6px;
+}

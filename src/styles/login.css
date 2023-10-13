@@ -1,0 +1,1348 @@
+h1 {
+  font-weight: 700 !important;
+  font-size: 24px !important;
+}
+
+.justify-center {
+  justify-content: center !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.align-center {
+  align-items: center !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.profile-container {
+  justify-content: flex-start;
+  /* padding-left: 4px; */
+}
+
+/* .mb-2 {
+  margin-bottom: 8px !important;
+} */
+
+.v-application {
+  display: flex;
+  position: relative;
+  line-height: 1.5;
+}
+
+.v-application .ml-4 {
+  margin-left: 16px !important;
+}
+
+.v-application--wrap {
+  flex: 1 1 auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+}
+
+.app-flex-box {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  min-height: 100%;
+  position: relative;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(env(safe-area-inset-bottom) + 57px);
+  background: #fff;
+  box-shadow: inset 0 1px 0 #f2f2f2;
+  z-index: 20;
+}
+
+nav a {
+  opacity: unset;
+  color: #ccc;
+  font-size: 10px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  flex: 1 1 0;
+}
+
+.navi-view {
+  display: flex;
+  flex-direction: column;
+  /* flex-grow: 1; */ /* 로그인 페이지 left */
+  flex-shrink: 0;
+  flex-basis: auto;
+  align-items: flex-end;
+}
+
+.navi-content-wrapper {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.navi-content-box {
+  border-right: 1px solid #e6e6e6;
+  height: 100%;
+}
+
+.navi-bar-item {
+  border-radius: 24px;
+  height: 48px;
+  width: 100%;
+  padding: 16px;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.profile-button2 {
+  border: 1px solid black;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 21px;
+  justify-content: flex-start;
+}
+
+.l-avatar-non-login {
+  background-color: #fff !important;
+  border: 1px solid #d2d2d2 !important;
+}
+
+.v-avatar {
+  align-items: center;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.v-badge,
+.v-badge__badge {
+  display: inline-block;
+  line-height: 1;
+}
+
+.v-badge {
+  position: relative;
+}
+
+.v-badge__wrapper {
+  flex: 0 1;
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.title-label {
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: #110f1a;
+  margin: 0;
+  color: #b3b3b3;
+}
+
+.bar-width {
+  width: 275px;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .bar-item-list {
+  padding: 8px 24px 8px 16px !important;
+} */
+
+.link-icon {
+  display: block;
+  margin: 11px auto 4px;
+  opacity: 0.2;
+}
+
+.blind {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  font-size: 1px;
+  line-height: 100px;
+  white-space: nowrap;
+}
+
+.primary-column {
+  /* border-right: 1px solid #e6e6e6; */
+  max-width: 600px;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* .primary-column > div {
+  border-right: 1px solid #e6e6e6;
+} */
+
+.primary-column > div {
+  /* border-right: 1px solid #e6e6e6; */
+  /* padding-bottom: 60px; */
+  /* margin-bottom: 16px; 다른 페이지 디자인에 여양*/
+}
+
+.primary-column > section {
+  /* border-right: 1px solid #e6e6e6;
+  height: 100vh; */
+  padding-bottom: 70px;
+}
+
+.view-content-box {
+  position: relative;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.view-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.wrapper-width {
+  /* width: 990px; */ /* 레이아웃 정렬 문제로 삭제 */
+}
+
+.login {
+  padding: 40px 32px;
+  height: 100%;
+  width: 100%;
+  max-width: 375px;
+}
+.login .logo {
+  margin-top: 50px;
+  font-family: "Noto Serif KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+.login .sText {
+  margin-bottom: 50px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height, or 143% */
+
+  color: #bdbdbd;
+}
+.mt-4 {
+  margin-top: 16px !important;
+}
+
+.title-24 {
+  font-style: normal;
+  color: #110f1a;
+}
+
+.wrap-btns {
+  position: relative;
+  width: 100%;
+}
+
+.wrap-circle-btns .btn-common {
+  margin: 0 9px;
+  height: 49px;
+  width: 49px;
+  border: 1px solid white;
+}
+
+.btn-common {
+  background-color: #fff !important;
+  font-style: normal;
+  font-weight: 700 !important;
+  font-size: 14px;
+  color: #110f1a;
+  /* color: #212121; */
+  height: 48px;
+  width: 100%;
+
+  border: 1px solid #595959;
+  border-radius: 24px;
+  padding: 14px 24px 14px 16px;
+  margin-top: 12px;
+}
+
+.btn-google {
+  background-image: url(../styles/Icons/login_google.svg);
+  background-position: bottom 11px left 15px;
+}
+
+.btn-apple {
+  background-image: url(../styles/Icons/login_apple.svg);
+  background-position: bottom 11px left 15px;
+}
+
+.btn-phone {
+  background-image: url(../styles/Icons/login_phone.svg);
+  background-position: bottom 13px left 20px;
+}
+
+.sign-btn-kakao {
+  background-image: url(../styles/Icons/login_kakao.svg);
+}
+
+.kakao-notification {
+  background-image: url(../styles/Icons/login_kakao.svg);
+}
+
+.sign-btn-naver {
+  background-image: url(../styles/Icons/login_naver.svg);
+}
+
+.sign-btn-facebook {
+  background-image: url(../styles/Icons/login_facebook.svg);
+}
+
+.jenny {
+  background-image: url(../styles/Icons/jennySearch.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  /*
+  position: absolute;
+ 
+width: 70%;
+height: 100%;
+left: 192px;
+bottom:300px;*/
+}
+
+.mr-2 {
+  margin-right: 8px !important;
+}
+
+.txt-or {
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  position: relative;
+  width: fit-content;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px !important;
+  color: #110f1a !important;
+
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.wrap-circle-btns {
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  position: relative;
+  width: fit-content;
+}
+
+.btn-go-login {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+
+  line-height: 140%;
+  color: #5a5a73;
+
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  position: relative;
+
+  width: fit-content;
+  margin-top: 32px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.btn-go-login span {
+  color: #ff424d;
+}
+
+/* 이메일 로그인 시작  */
+.page-header {
+  border-bottom: 1px solid #e6e6e6 !important;
+  z-index: 5;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(
+    270deg,
+    #fff,
+    hsla(0, 0%, 100%, 0.7),
+    hsla(0, 0%, 100%, 0.7),
+    #fff
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid hsla(0, 0%, 100%, 0.18);
+}
+
+.page-header .title-row {
+  padding: 16px;
+  height: 56px;
+}
+
+.theme--light.v-btn.v-btn--icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.v-btn--icon.v-size--default {
+  height: 36px;
+  width: 36px;
+}
+
+.v-btn.v-size--default,
+.v-btn.v-size--large {
+  font-size: 0.875rem;
+}
+
+.v-application .ml-n2 {
+  margin-left: -8px !important;
+}
+
+.v-application .mr-2 {
+  margin-right: 8px !important;
+}
+
+.v-btn__content {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: inherit;
+  line-height: normal;
+  position: relative;
+  transition: inherit;
+  transition-property: opacity;
+}
+
+.v-btn--fab.v-size--default .v-icon,
+.v-btn--fab.v-size--small .v-icon,
+.v-btn--icon.v-size--default .v-icon,
+.v-btn--icon.v-size--small .v-icon {
+  height: 24px;
+
+  width: 24px;
+}
+
+.grow,
+.spacer {
+  flex-grow: 1 !important;
+}
+
+.page-header h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px !important;
+  color: #110f1a;
+  color: #000;
+  white-space: nowrap;
+}
+
+form {
+  padding: 0 16px;
+  display: block;
+}
+
+.novalidate {
+  /* padding: 0 25px; */
+}
+
+.wrap-inp {
+  position: relative;
+  /* margin-top: 10px !important; */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.disc.lost a {
+  color: #878787;
+  text-decoration: underline;
+}
+
+.disc.lost {
+  margin: 8px 8px 24px auto;
+}
+
+.wrap-inp .disc.lost {
+  text-align: right;
+}
+
+.wrap-inp .disc {
+  position: relative;
+  width: 92%;
+  /* width: 401px; */
+  margin-bottom: 28px;
+  padding-left: 10px;
+  font-size: 14px;
+  line-height: 19px;
+  color: #000;
+  box-sizing: border-box;
+}
+.wrap-inp .disc .a {
+  color: #d13131 !important;
+  text-decoration: none;
+}
+
+p {
+  font-style: normal;
+  font-weight: 400;
+  color: #110f1a;
+}
+
+.btn-login {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px !important;
+  color: #fff;
+  height: 50px;
+  border-radius: 25px;
+  width: 100%;
+}
+
+.btn-save {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px !important;
+  color: #fff;
+  background-color: #fb7268a8;
+  height: 50px;
+  border-radius: 25px;
+  width: 100%;
+}
+
+.btn-save:disabled {
+  background-color: #f3eded;
+  color: #888888;
+}
+/* 
+.btn-next{
+  width: 480px;
+height: 44px;
+background: #FB7268;
+border-radius: 999px;
+color: #fff;
+
+} */
+
+/* .v-application .btn {
+  display: block;
+  width: 92%;
+  min-height: 44px;
+  margin: 10px auto 0;
+  padding: 10px 0;
+  border-radius: 999px;
+  background-color: #ff424d;
+  color: #fff;
+  font-size: 17px;
+} */
+
+button {
+  overflow: visible;
+  border: 0;
+  line-height: 1;
+  text-transform: none;
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+body,
+button,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+select,
+table,
+td,
+textarea,
+th,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-goLogin {
+  width: 100%;
+  max-width: 600px;
+  bottom: calc(env(safe-area-inset-bottom) + 40px);
+  text-decoration: none;
+}
+
+.btn-goLogin {
+  display: block;
+  margin-top: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.sidebar-width {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sidebar-column {
+  margin-right: 10px;
+}
+
+.sidebar-content-wrapper {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.sidebar-content-box {
+  height: 100%;
+}
+
+.side-bar-column-content {
+  width: 100%;
+  padding: 56px 16px;
+  display: flex;
+  flex-flow: column;
+}
+
+@media screen and (max-width: 500px) {
+  .navi-view {
+    display: none !important;
+  }
+
+  .sidebar-content-box {
+    display: none !important;
+  }
+  .bottom-dialog-frame {
+    align-items: flex-end;
+  }
+  .navi-content-wrapper {
+    display: none !important;
+  }
+
+  .primary-column {
+    padding-bottom: 57px;
+    max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  /* 500px 에서 조정함 */
+  .show-in-xs {
+    display: none !important;
+  }
+  .primary-column {
+    align-items: flex-start;
+  }
+}
+
+/* todo 이를 시점으로 primary-column이 줄어들기 시작해 500까지. 줄어들게*/
+@media screen and (max-width: 687px) {
+  .main-view,
+  .wrapper-width {
+    align-items: stretch;
+    width: 100%;
+  }
+  .primary-column {
+    padding-bottom: 57px;
+  }
+}
+
+@media screen and (max-width: 987px) {
+  .main-view {
+    flex-grow: 2;
+  }
+  .wrapper-width {
+    /* width: 600px; */ /* 레이아웃 정렬 문제로 삭제 */
+  }
+  .primary-column {
+    max-width: 600px;
+  }
+  .sidebar-column {
+    display: none;
+  }
+  .main-view {
+    flex-grow: 2;
+  }
+}
+
+@media screen and (max-width: 1077px) {
+  .wrapper-width {
+    /* width: 920px; */ /* 레이아웃 정렬 문제로 삭제 */
+  }
+  .sidebar-width {
+    width: 290px;
+  }
+}
+
+@media screen and (max-width: 1264px) {
+  .profile-button {
+    justify-content: center;
+  }
+  .navi-bar-item {
+    display: flex;
+    justify-content: center;
+    width: 48px;
+    padding: 0;
+  }
+  .profile-container {
+    justify-content: center;
+    /* padding-left: 2px; */
+  }
+  .bar-width {
+    width: 88px;
+  }
+}
+
+.btn-login:disabled {
+  background-color: #ffd9db;
+}
+
+/* 이메일 로그인 끝  */
+
+/* 이메일 회원가입 시작  */
+
+.wrap-inp .disc span {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  color: #ff424d;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+/* 이메일 회원가입 끝  */
+
+/* 비밀번호 재설정 forgot password 시작  */
+.p-lost {
+  margin-bottom: 24px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+}
+
+:after,
+:before {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+.btn-goLogin,
+.btn-verification-email {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px !important;
+  color: #fff;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #ff424d;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.wrap-inp.l-error input {
+  border-color: #ff5252;
+}
+
+.wrap-inp.l-error {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mdi-chevron-left::before {
+  content: "\F0141";
+}
+
+.mdi:before,
+.mdi-set {
+  display: inline-block;
+  font: normal normal normal 24px/1 "Material Design Icons";
+  font-size: inherit;
+  text-rendering: auto;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.v-icon.v-icon:after {
+  background-color: currentColor;
+  border-radius: 50%;
+  content: "";
+  display: inline-block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: scale(1.3);
+  width: 100%;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* 비밀번호 재설정 forgot password 끝  */
+
+/* makeaccount-auth 회원가입 닉네임 만들기 시작 */
+
+.choose-sex {
+  margin: 0px;
+  position: relative;
+  padding-left: 105px;
+  box-sizing: border-box;
+}
+
+.choose-sex p {
+  left: 25px;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  color: #000;
+  transform: translateY(-50%);
+}
+.choose-sex button.btn-female,
+.choose-sex button.btn-male {
+  border-radius: 25px;
+}
+.choose-sex .btn-female {
+  margin-right: 20px;
+}
+
+.choose-sex .btn-femaleOn {
+  margin-right: 20px;
+  border-color: #fb7268 !important;
+  background-color: #f3f0f09c !important;
+}
+
+.choose-sex .btn-male {
+  margin-right: 20px;
+}
+
+.choose-sex .btn-maleOn {
+  margin-right: 20px;
+  border-color: #fb7268 !important;
+  background-color: #f3f0f09c !important;
+}
+
+.choose-sex [class^="btn-"] {
+  position: relative;
+  display: inline-block;
+  width: 44%;
+  height: 44px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background: #fff;
+  font-size: 17px;
+}
+
+.v-application .btn,
+.btn {
+  display: block;
+  width: 85%;
+  /* width: 480px; */
+  min-height: 44px;
+  margin: 10px auto 0;
+  padding: 10px 0 !important;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--color-main);
+  color: #fff;
+  font-size: 17px !important;
+}
+.v-application .btn:hover,
+.btn {
+  background-color: var(--color-main-hover);
+  color: #fff;
+}
+
+.inp-txt {
+  display: block;
+  width: calc(100% - 30px);
+  min-height: 44px;
+  margin: 0 15px;
+  padding: 5px 10px;
+  border: 1px solid #c9c9c9;
+  border-radius: 4px;
+  background: #f4f4f4;
+  font-size: 17px;
+  box-sizing: border-box;
+  display: inline-grid; /*레이아웃 정렬 문제*/
+}
+
+[type="reset"],
+[type="submit"],
+button,
+html [type="button"] {
+  -webkit-appearance: button;
+}
+
+/* makeaccount-auth 회원가입 닉네임 만들기 끝 */
+
+/* makeaacount - select hashtag  시작 */
+
+.my-interest {
+  padding: 33px 15px 10px;
+  /* background: #e8f6ff; */
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+}
+
+.tags {
+  padding-left: 15px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.tags button {
+  margin: 15px 13px 0 0;
+  padding: 0 17px;
+  border-radius: 15px;
+  border: 1px solid #a8a8a8;
+  color: #a8a8a8;
+  font-size: 16px;
+  line-height: 29px;
+}
+
+.tags .hashtagbutton {
+  margin: 15px 13px 0 0;
+  padding: 0 17px;
+  border-radius: 15px;
+  border: 1px solid #efeff4;
+  background-color: #efeff4;
+  color: #000000;
+  font-size: 16px;
+  line-height: 29px;
+}
+
+.tags button.selected,
+.tags button:active {
+  border-color: EFEFF4;
+  color: EFEFF4;
+}
+
+[type="reset"],
+[type="submit"],
+button,
+html [type="button"] {
+  -webkit-appearance: button;
+}
+
+[role="button"],
+[type="button"],
+[type="reset"],
+[type="submit"],
+button {
+  cursor: pointer;
+  color: inherit;
+}
+
+button {
+  overflow: visible;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* makeaacount - select hashtag  끝  */
+
+/* makeaccont - startfollow 시작  */
+
+h1,
+h2 {
+  font-style: normal;
+  color: #110f1a;
+}
+
+h2 {
+  font-weight: 700 !important;
+  font-size: 22px;
+}
+
+h2.tit {
+  padding: 40px 15px 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+h2.tit .subtit {
+  display: block;
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  line-height: 19px;
+}
+
+/* 회원 가입 완료! */
+.title-row > button > .pre {
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid #6b6b6b;
+  border-left: 2px solid #6b6b6b;
+  transform: rotate(45deg);
+}
+.title-row p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.rcmmnd-star {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 300px;
+}
+
+.rcmmnd-star .lst-star {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.rcmmnd-star .lst-star li {
+  position: relative;
+  width: 50%;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* btn 으로 대체  */
+/* .loginStartBtn {
+  width: 90%;
+  height: 44px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fb7268;
+} */
+
+@media screen and (min-width: 600px) {
+  .rcmmnd-star .lst-star {
+    padding: 20px 20px 0;
+  }
+  .rcmmnd-star .lst-star li {
+    width: 33.3333%;
+  }
+}
+
+.v-application ol,
+.v-application ul {
+  padding-left: 24px;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+fieldset,
+img,
+input,
+li,
+textarea {
+  border: 0;
+  vertical-align: top;
+}
+
+.rcmmnd-star .lst-star .ico-photo,
+.rcmmnd-star .lst-star .thmb-prf {
+  margin-bottom: 4px;
+  width: 143px;
+  height: 143px;
+  border: none;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.ico-photo,
+.thmb-prf {
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.rcmmnd-star .lst-star .name {
+  font-size: 16px;
+  padding: 0px 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bx-agree4 {
+  position: relative;
+  height: 25px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 109px;
+  left: calc(50% + 36px);
+  width: 25px;
+}
+
+.bx-agree4 .inp {
+  /* width: 25px; */
+  height: 20px;
+  background: none;
+}
+
+input,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button,
+input,
+select,
+textarea {
+  background-color: transparent;
+  border-style: none;
+}
+
+fieldset,
+img,
+input,
+li,
+textarea {
+  border: 0;
+  vertical-align: top;
+}
+
+body,
+button,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+select,
+table,
+td,
+textarea,
+th,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.bx-agree4 .inp-lb {
+  left: 0;
+  color: #222;
+  font-size: 0;
+}
+
+.bx-agree4 .inp-lb,
+.bx-agree .inp {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bx-agree4 .inp:checked + .inp-lb:before {
+  background: #ff424d;
+}
+
+.bx-agree4 .inp-lb:before {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #ff424d;
+  border-radius: 50%;
+  background: #fff;
+  vertical-align: middle;
+  content: "";
+}
+
+.bx-agree4 .bx-agree .inp:checked + .inp-lb:after,
+.bx-agree4 .ico-chk,
+.bx-agree4 .inp:checked + .inp-lb:after {
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  transform: rotate(45deg);
+  width: 5px;
+  height: 11px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+.bx-agree4 .inp:checked + .inp-lb:after {
+  content: "";
+}
+
+:after,
+:before {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+*,
+:after,
+:before {
+  background-repeat: no-repeat;
+  box-sizing: inherit;
+}
+
+input[type="checkbox" i] {
+  background-color: initial;
+  cursor: default;
+  /* appearance: auto; */
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: initial;
+}
+/* 체크박스 디자인*/
+input[type="checkbox"] {
+  background-color: initial;
+  cursor: default;
+  /* appearance: auto; */
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: initial;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid #ccc;
+  background-image: url(../styles/Icons/ico_check-circle.svg);
+  background-position: center;
+}
+input[type="checkbox"]:checked {
+  background-color: initial;
+  cursor: default;
+  /* appearance: auto; */
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: initial;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  /* border: 2px solid #ccc; */
+  background-image: url(../styles/Icons/ico_check-circle_on.svg);
+  background-position: center;
+}
+input[type="checkbox"]::before {
+  /* position: absolute; */
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  margin-top: -2px;
+  vertical-align: middle;
+  /* top:0px; */
+  /* left:0px; */
+}
+.v-application p {
+  margin-bottom: 16px;
+}
+
+/* makeaccont - startfollow 끝  */
+
+/* 세팅 - 비밀번호변경 setting- change password */
+
+.v-application p {
+  margin-bottom: 16px;
+}
+
+.caution,
+.notice {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.caution {
+  padding: 24px 45px;
+  font-size: 13x;
+  color: #110f1a;
+  line-height: 140%;
+  color: #d93229;
+}

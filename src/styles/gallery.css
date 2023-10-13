@@ -1,0 +1,65 @@
+.gallery {
+  /* -webkit-column-count: 3; */
+  /* -moz-column-count: 3; */
+  /* column-count: 3; */
+  /* -webkit-column-width: 33%; */
+  /* -moz-column-width: 33%; */
+  /* column-width: 33%; */
+  /* padding: 0 12px; */
+  /* column-gap: 2px; */
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: azure; */
+}
+
+.gallery .pics {
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease;
+  cursor: pointer;
+  margin-bottom: 2px;
+  width: calc(99% / 3);
+}
+.gallery .pics:not(:nth-child(3n)) {
+  margin-right: 2px;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.loading {
+  filter: blur(10px);
+  clip-path: inset(0);
+}
+
+.loaded {
+  filter: blur(0px);
+  transition: filter 0.5s linear;
+}
+
+/* 탐색의 갤러리 디자인 수정 클래스 변경*/
+
+.gallery_wrap {
+  width: 100%;
+  max-width: 600px;
+  min-width: 490px;
+  margin: 10px auto;
+}
+.gallery_columns {
+  -webkit-column-count: 3;
+  -webkit-column-gap: 10px;
+  -moz-column-count: 2;
+  -moz-column-gap: 10px;
+  column-count: 3;
+  column-gap: 10px;
+}
+.pics {
+  background-color: pink;
+  display: inline-block;
+
+  background: #fff;
+
+  margin: 1px 0px;
+}

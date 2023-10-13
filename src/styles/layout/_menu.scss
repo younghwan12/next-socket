@@ -1,0 +1,33 @@
+.left-item-list ul {
+  width: 100%;
+  padding-left: 0;
+  li {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    line-height: 48px;
+    padding: 12px;
+    border-radius: 24px;
+    margin-bottom: 8px;
+    &:nth-child(1) {
+      span {
+        background-image: url(/images/menu/leftIcon01.02575421.svg);
+      }
+    }
+    cursor: pointer;
+    &.active {
+      background-color: #f2f2f2;
+      p {
+        color: #000000;
+      }
+    }
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      color: #838499;
+    }
+  }
+}

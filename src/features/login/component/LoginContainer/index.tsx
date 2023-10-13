@@ -1,12 +1,13 @@
 import React, { useEffect } from "react"
 import { Button, Checkbox, Form, Input } from "antd"
-import { login } from "../../redux/loginSlice"
+// import { login } from "../../redux/loginSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { useRouter } from "next/router"
+import { getLogin } from "../../redux/loginAction"
 
 type FieldType = {
   id?: string
-  username?: string
+  email?: string
   password?: string
   remember?: string
 }
@@ -15,10 +16,20 @@ const LoginContainer = () => {
   const { push } = useRouter()
   const dispatch = useAppDispatch()
 
-  const onFinish = (v: any) => {
-    // console.log(loginInfo)
-    dispatch(login(v))
-    push("/friends")
+  // const onFinish = (v: any) => {
+  //   // console.log(loginInfo)
+  //   dispatch(login(v))
+  //   push("/friends")
+  // }
+
+  const onFinish = async (e) => {
+    await dispatch(
+      getLogin({
+        email: e.email,
+        password: e.password,
+      })
+    ),
+      push("/")
   }
 
   return (
@@ -32,15 +43,8 @@ const LoginContainer = () => {
       autoComplete="off"
     >
       <Form.Item<FieldType>
-        label="DataBase Id (PK)"
-        name="id"
-        rules={[{ required: true, message: "Please input your Id!" }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item<FieldType>
-        label="Username"
-        name="username"
+        label="Email"
+        name="email"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
         <Input />
