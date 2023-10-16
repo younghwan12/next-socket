@@ -1,22 +1,24 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "@reduxjs/toolkit";
-import appApi from "./appApi";
-import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
-import loginSlice from "@/features/login/redux/loginSlice";
+import { configureStore } from "@reduxjs/toolkit"
+import { combineReducers } from "@reduxjs/toolkit"
+import appApi from "./appApi"
+import storage from "redux-persist/lib/storage"
+import { persistReducer, persistStore } from "redux-persist"
+import loginSlice from "@/features/login/redux/loginSlice"
+import followReducer from "@/features/friends/redux/followSlice"
 
 const persistConfig = {
   key: "root",
   storage,
   // whitelist: ["login"], // login 슬라이스만 유지하도록 whitelist 설정
-};
+}
 
 const reducers = combineReducers({
   [appApi.reducerPath]: appApi.reducer,
   login: loginSlice,
-});
+  follow: followReducer,
+})
 
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, reducers)
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -27,9 +29,9 @@ export const store = configureStore({
       },
     }).concat(appApi.middleware),
   devTools: false,
-});
+})
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store)
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>

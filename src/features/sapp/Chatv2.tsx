@@ -1,10 +1,13 @@
-import { useAppSelector } from "@/redux/hooks"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import React, { useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 import SockJS from "sockjs-client"
 import Stomp from "stompjs"
 import { config } from "@/config/config"
 import dayjs from "dayjs"
+import { ffList } from "../friends/redux/followAction"
+import { Spin } from "antd"
+import Image from "next/image"
 
 const StyledDiv = styled.div`
   text-align: center;
@@ -38,12 +41,25 @@ const StyledButton = styled.button`
 `
 
 const Chatv2 = ({ stompClient, setMsgs, msgs }) => {
+  const dispatch = useAppDispatch()
   const { token, userInfo } = useAppSelector(({ login }) => login)
-
   const [message, setMessage] = useState("")
   const [roomID, setRoomID] = useState(userInfo?.uid || "")
-
   const messageInputRef = useRef<any>(null)
+  const { ff, ffLoading } = useAppSelector(({ follow }) => follow)
+
+  const userList = [
+    {
+      id: "1",
+      user_id: "twice",
+      profile_img_url: "/images/twice.jpg",
+    },
+    {
+      id: "2",
+      user_id: "ive",
+      profile_img_url: "/images/ive.jpg",
+    },
+  ]
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때 포커스를 메시지 입력 필드로 이동
@@ -95,6 +111,17 @@ const Chatv2 = ({ stompClient, setMsgs, msgs }) => {
     }
   }
 
+  // const [ffList, setFfList] = useState<any>([])
+  useEffect(() => {
+    console.log(ff)
+  }, [token])
+
+  const onDoubleClick = (room: any) => {
+    console.log("room", room)
+    // setRowData(room)
+    // setVisible(true)
+  }
+
   return (
     <StyledDiv>
       <h1>Sub Page</h1>
@@ -107,6 +134,7 @@ const Chatv2 = ({ stompClient, setMsgs, msgs }) => {
           placeholder="bona(886), kihihi81(525) 방 이름을 입력하세요 "
         />
       </div>
+
       <div>
         <Label>DM 메시지 입력를 입력하세요</Label>
         <StyledInput

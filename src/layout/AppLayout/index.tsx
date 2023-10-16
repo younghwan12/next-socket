@@ -1,7 +1,7 @@
 import { config } from "@/config/config"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { useRouter } from "next/router"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import SockJS from "sockjs-client"
 import Stomp from "stompjs"
 import dynamic from "next/dynamic"
@@ -12,6 +12,8 @@ import Chatv2 from "@/features/sapp/Chatv2"
 import Image from "next/image"
 import dayjs from "dayjs"
 import "dayjs/locale/ko" // 한국어 로케일 추가
+import { ffList } from "@/features/friends/redux/followAction"
+import { Toast } from "primereact/toast"
 
 dayjs.locale("ko")
 
@@ -22,6 +24,7 @@ interface LayoutProps {
 }
 
 const AppLayout: React.FC<LayoutProps> = (props) => {
+  const toastRef = useRef<any>(null)
   const { push } = useRouter()
   const dispatch = useAppDispatch()
   const { token, userInfo } = useAppSelector(({ login }) => login)
@@ -64,7 +67,11 @@ const AppLayout: React.FC<LayoutProps> = (props) => {
         `/topic/dm/` + userInfo.uid,
         (message: { body: string }) => {
           const subscribedMessage = JSON.parse(message.body)
-          console.log("first", subscribedMessage)
+          toastRef.current.show({
+            severity: "info",
+            summary: "메시지가 도착했습니다. ",
+            life: 2000,
+          })
           setMsgs((prevMsgs) => [...prevMsgs, subscribedMessage.chat])
         },
         {
@@ -101,6 +108,7 @@ const AppLayout: React.FC<LayoutProps> = (props) => {
 
   return (
     <>
+      <Toast ref={toastRef} position="top-right" />
       <div className="app-flex-box">
         <LeftMenu />
         <div className="main-view">
@@ -117,18 +125,19 @@ const AppLayout: React.FC<LayoutProps> = (props) => {
                       <div className="trending-stars-view">{/* <Recommend /> */}</div>
                     </div>
                   </div>
-                  <div className="Content__Wrapper-sc-1cjm3se-0 uFNas">
+                  <div className="Content__Wrapper-sc-1cjm3se-0 uFNas iPohNc">
                     {msgs.length ? (
                       msgs.map((chatMessage, i) => (
                         <div
                           key={"msg_" + i}
                           className={`chat ${chatMessage.userName === userInfo.uid ? "eTmjrj" : "gRZqBz"}`}
                         >
-                          {/* Always display the sender's name */}
-                          <>
-                            <div className="nameBlock lcFuUq">{chatMessage.nickname}</div>
-                          </>
-
+                          {chatMessage.userName !== userInfo.uid && (
+                            <>
+                              <Image width={45} height={45} src="/images/test01.jpg" alt="thumbnail" />
+                              <div className="nameBlock lcFuUq">{chatMessage.nickname}</div>
+                            </>
+                          )}
                           <div>
                             <div
                               className={`ChatBlock__ChatWrapper-sc-1tikh8m-0 iCmNFm ${

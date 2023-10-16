@@ -5,12 +5,13 @@ import Router, { useRouter } from "next/router"
 import Link from "next/link"
 import { fetchUser, getLogin } from "@/features/login/redux/loginAction"
 import SLayoutLogin from "@/layout/SLayoutLogin"
+import { ffList } from "@/features/friends/redux/followAction"
 
 const EmailPage = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const [text, setText] = useState<any>([])
-  const { token, errorMsg1 } = useAppSelector(({ login }) => login)
+  const { token, userInfo } = useAppSelector(({ login }) => login)
 
   const handleInput = (e: any) => {
     setText({
@@ -29,7 +30,7 @@ const EmailPage = () => {
   }
 
   useEffect(() => {
-    if (token) {
+    if (token !== undefined) {
       fetchData()
     }
   }, [token])
@@ -38,7 +39,6 @@ const EmailPage = () => {
     if (token !== undefined && token !== null && token.length !== 0) {
       //사용자 상세 정보
       await dispatch(fetchUser(token))
-
       Router.push(`/`)
     }
   }
