@@ -1,8 +1,48 @@
-.ant-layout-content {
-  ::-webkit-scrollbar {
-    display: none;
+body {
+  // &::-webkit-scrollbar {
+  //   width: 10px;
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: #aeaeba;
+  //   border-radius: 10px;
+  //   background-clip: padding-box;
+  //   border: 2px solid transparent;
+
+  //   &:hover {
+  //     background-color: #6255f6;
+  //   }
+  // }
+  // .ant-layout-content {
+  //   > div {
+  //     ::-webkit-scrollbar-thumb {
+  //       height: 5px;
+  //     }
+  //   }
+  //   .jwBxvn {
+  //     ::-webkit-scrollbar-thumb {
+  //       height: 5px;
+  //     }
+  //   }
+  // }
+}
+
+.chatting_wrapper {
+  padding: 0 5px;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #aeaeba;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+
+    // &:hover {
+    //   background-color: #6255f6;
+    // }
   }
 }
+
 .chat_me {
   color: coral;
 }

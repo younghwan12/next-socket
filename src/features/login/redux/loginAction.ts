@@ -1,44 +1,34 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
-import loginApi from "../api/loginApi"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { UserInfo } from "../types"
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher"
+import loginApi from "../api"
 
+// 로그인
 export const getLogin = createAsyncThunk<
-  any,
+  UserInfo,
   {
-    email: string
-    password: string
+    params: Params
   }
->("Login/getLogin", async (data, { rejectWithValue }) => {
+>("auth/login", async (data, { rejectWithValue }) => {
   try {
-    const response = await loginApi.login(data)
-    return response
-  } catch (error) {
-    return rejectWithValue(error)
+    const response = await loginApi.login(data.params)
+    return response.data
+  } catch (err: any) {
+    const serializedError = {
+      message: err.response.data.message,
+      status: err.response.data.status,
+      // 필요한 다른 정보도 추가할 수 있음
+    }
+    return rejectWithValue(serializedError)
   }
 })
 
-export const fetchUser = createAsyncThunk("Login/fetchUser", async (token: string, { rejectWithValue }) => {
+// 사용자정보
+export const getUserInfo = createAsyncThunk("auth/userInfo", async (token: string, { rejectWithValue }) => {
   try {
-    const response = await (await loginApi.fetchUser(token)).data
-
-    return response
+    const response = await loginApi.getUserInfo(token)
+    return response.data
   } catch (rejectWithValue) {
     return console.log(rejectWithValue)
-  }
-})
-
-export const getLogout = createAsyncThunk("Login/getLogout", async (data, { rejectWithValue }) => {
-  try {
-    const response = data
-    return response
-  } catch (err) {
-    return console.log(err)
-  }
-})
-
-export const getSocialToken = createAsyncThunk("Login/getSocialToken", async (token: string, { rejectWithValue }) => {
-  try {
-    return token
-  } catch (err) {
-    return console.log(err)
   }
 })

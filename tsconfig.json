@@ -14,6 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "strictNullChecks": false, //  null 무시
     "paths": {
       "@/*": ["./src/*"]
     },

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
+  reactStrictMode: false,
   webpack: (config, { isServer }) => {
     // 클라이언트 측 번들에서는 'net' 모듈을 제외
     if (!isServer) {

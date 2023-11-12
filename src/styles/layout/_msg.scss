@@ -1,0 +1,128 @@
+.msg-you {
+  .txt {
+    white-space: pre-line;
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 16px;
+    background-color: #efeff4;
+    color: #000;
+    max-width: 70%;
+    margin-left: 40px;
+  }
+  .status {
+    position: relative;
+    .not-read {
+      position: absolute;
+      left: 2px;
+      top: -18px;
+      font-size: 14px;
+      color: #000;
+    }
+  }
+  .chat-content {
+    margin-left: 4px;
+    flex-direction: row-reverse;
+  }
+}
+.msg-me {
+  .status {
+    position: relative;
+    .not-read {
+      position: absolute;
+      right: 2px;
+      top: -18px;
+      font-size: 14px;
+      color: #000;
+      // color: rgb(255, 236, 66);
+    }
+  }
+  .txt {
+    white-space: pre-line;
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 16px;
+    background-color: #2d2b40;
+    color: #fff;
+    max-width: 70%;
+  }
+}
+
+.chat-content {
+  position: relative;
+  display: flex;
+  grid-gap: 4px;
+  gap: 4px;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  .status {
+    white-space: nowrap;
+  }
+  .item-time {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: #9da0b2;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  .prf {
+    // display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+    min-width: 28px;
+    min-height: 28px;
+    background-color: rgba(0, 0, 0, 0.062);
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+}
+
+.msg_wrap {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  .msg {
+    position: relative;
+    margin: 12px 0;
+    color: #000;
+    font-size: 16px;
+    line-height: 20px;
+    // .chat-content {
+    //   margin-left: 4px;
+    //   flex-direction: row-reverse;
+    // }
+  }
+}
+.separator {
+  text-align: center;
+  width: 100%;
+  padding: 13px 0px;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    width: 96%;
+    height: 0.1px;
+    background-color: rgb(114, 123, 131);
+  }
+  span {
+    position: relative;
+    display: inline-block;
+    background-color: rgb(178, 199, 217);
+    padding: 0px 10px;
+  }
+}

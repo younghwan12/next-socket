@@ -4,18 +4,17 @@ import appApi from "./appApi"
 import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
 import loginSlice from "@/features/login/redux/loginSlice"
-import followReducer from "@/features/friends/redux/followSlice"
 
 const persistConfig = {
   key: "root",
   storage,
-  // whitelist: ["login"], // login 슬라이스만 유지하도록 whitelist 설정
+  // whitelist: ["auth"], // login 슬라이스만 유지하도록 whitelist 설정
 }
 
 const reducers = combineReducers({
   [appApi.reducerPath]: appApi.reducer,
-  login: loginSlice,
-  follow: followReducer,
+  // code: codeMgtReducer,
+  auth: loginSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)
