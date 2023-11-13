@@ -25,7 +25,6 @@ export const chattingSlice = createSlice({
       action: PayloadAction<{ roomId: number; message: string; not_read_chat?: number; readYN?: number }>
     ) => {
       const { roomId, message, not_read_chat, readYN } = action.payload
-      console.log("readYN", readYN)
       state.chatRoomList = state.chatRoomList.map((room) => {
         if (room.roomId === roomId) {
           return {

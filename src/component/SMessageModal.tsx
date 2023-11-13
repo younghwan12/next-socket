@@ -69,7 +69,6 @@ const SMessageModal = (props) => {
   }, [rowData.not_read_chat])
 
   const readChat = () => {
-    console.log("readChat 있다!!")
     dispatch(
       updateNReadChat({
         roomId: rowData.roomId,

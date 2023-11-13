@@ -124,7 +124,6 @@ const SChattingContainer = () => {
               })
             )
           }
-
           dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now }))
         },
         {
