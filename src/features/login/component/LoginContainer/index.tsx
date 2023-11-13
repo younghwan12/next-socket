@@ -32,7 +32,7 @@ const LoginContainer = () => {
     ).then((response) => {
       if (response.type === "auth/login/fulfilled") {
         // 로그인이 성공하면 '/message' 페이지로 이동
-        router.push("/chat")
+        router.push("/message")
       }
       // router.push("/")
     })

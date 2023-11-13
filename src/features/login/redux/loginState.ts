@@ -8,5 +8,7 @@ export const initialState = {
   userInfoDetail: <any>[],
   fetchUserInfoDetailLoading: false,
 
+  nReadChat: 1,
+
   stomp: <any>[],
 }

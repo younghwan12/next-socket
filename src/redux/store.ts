@@ -5,6 +5,9 @@ import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
 import loginSlice from "@/features/login/redux/loginSlice"
 
+/* DevOps 관리 */
+import chattingSlice from "@/features/chat/redux/chattingSlice"
+
 const persistConfig = {
   key: "root",
   storage,
@@ -15,6 +18,7 @@ const reducers = combineReducers({
   [appApi.reducerPath]: appApi.reducer,
   // code: codeMgtReducer,
   auth: loginSlice,
+  chat: chattingSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers)

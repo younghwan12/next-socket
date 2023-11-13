@@ -1,2 +1,2 @@
-export { default as ChatContainer } from "./ChatContainer"
+export { default as SChattingContainer } from "./SChattingContainer"
 export { default as ChattingContainer } from "./ChattingContainer"

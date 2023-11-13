@@ -92,6 +92,9 @@
   display: inline-block;
   width: 100%;
   height: 100%;
+  > div:last-child {
+    padding-bottom: 5px;
+  }
   .msg {
     position: relative;
     margin: 12px 0;

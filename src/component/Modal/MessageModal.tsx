@@ -53,14 +53,13 @@ const MessageModal = (props) => {
 
   useEffect(() => {
     if (rowData && rowData.not_read_chat > 0) {
-      // 미읽은 채팅이 있을 때 readChat 액션 실행
-      // readChat();
-      // console.log("ㅇ여기몇번타나")
       readChat()
     }
   }, [rowData.not_read_chat])
 
-  const readChat = () => {}
+  const readChat = () => {
+    console.log("readChat 있다!!")
+  }
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -91,7 +90,6 @@ const MessageModal = (props) => {
       // rowData.participant[0].uid <-- isMe
       notRead: rowData.participant[0].uid === userInfo.uid ? 0 : rowData.participant.length,
     }
-    console.log("msgData", msgData)
     sendMessage({ token: token.accessToken, formData: msgData })
 
     // sendAlert(msgData)

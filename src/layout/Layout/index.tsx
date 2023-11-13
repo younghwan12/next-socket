@@ -7,9 +7,9 @@ import {
   VideoCameraOutlined,
   MessageOutlined,
 } from "@ant-design/icons"
-import { Menu, Button, theme, Layout as AntdLayout } from "antd"
-import {} from "antd"
+import { Menu, Button, theme, Layout as AntdLayout, Badge, Avatar } from "antd"
 import Image from "next/image"
+import { BellOutlined } from "@ant-design/icons"
 import { useRouter } from "next/router"
 import Link from "next/link"
 const { Header, Sider, Content } = AntdLayout
@@ -18,15 +18,19 @@ import { CommentOutlined, CustomerServiceOutlined } from "@ant-design/icons"
 import { FloatButton } from "antd"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { logout } from "@/features/login/redux/loginSlice"
+import { useLazyGetChatRoomQuery } from "@/features/chat/redux/chattingApi"
 interface LayoutProps {
   children: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dispatch = useAppDispatch()
+  // const [getChattingRoom, { data: chatRoomData, isFetching }] = useLazyGetChatRoomQuery()
+  const chattingRoom = useAppSelector((state) => state.chat.chatRoomList)
+  const totalNotReadNum = chattingRoom ? chattingRoom.reduce((acc, curr) => acc + curr.not_read_chat, 0) : 0
   // const loginInfo = useAppSelector((state) => state.auth.loginInfo)
   const userInfo = useAppSelector((state) => state.auth.userInfoDetail)
-
+  const token = useAppSelector((state) => state.auth.loginInfo)
   const items: MenuProps["items"] = [
     {
       key: "6",
@@ -34,9 +38,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     },
     {
       key: "7",
-      label: <Link href="/message">Talk Making</Link>,
+      label: <Link href="/message">chat with toolkit</Link>,
     },
   ]
+  // useEffect(() => {
+  //   if (token.accessToken && userInfo) {
+  //     getChattingRoom({
+  //       token: token.accessToken,
+  //       uid: userInfo.uid,
+  //     })
+  //   }
+  // }, [token, userInfo])
 
   const router = useRouter()
   const [currentMenu, setCurrentMenu] = useState(null)
@@ -74,9 +86,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             }}
           />
           {userInfo?.uid ? (
-            <Button className="login_btn" onClick={logOutFunc}>
-              로그아웃
-            </Button>
+            <>
+              <Badge count={totalNotReadNum}>
+                <BellOutlined style={{ fontSize: 24 }} />
+              </Badge>
+              <Button className="login_btn" onClick={logOutFunc}>
+                로그아웃
+              </Button>
+            </>
           ) : (
             <Button className="login_btn" onClick={() => router.push("/login")}>
               로그인

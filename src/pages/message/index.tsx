@@ -1,13 +1,13 @@
-import { ChatContainer } from "@/features/chat/components"
+import { SChattingContainer } from "@/features/chat/components"
 import dynamic from "next/dynamic"
 
-const ChatPage = () => {
+const SChatPage = () => {
   const DynamicLayout = dynamic(() => import("@/layout/Layout"))
   return (
     <DynamicLayout>
-      <ChatContainer />
+      <SChattingContainer />
     </DynamicLayout>
   )
 }
 
-export default ChatPage
+export default SChatPage

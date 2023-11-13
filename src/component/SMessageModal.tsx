@@ -1,25 +1,25 @@
 import React, { ChangeEvent, FormEvent, KeyboardEvent, useCallback, useEffect, useRef, useState } from "react"
 // import { AiOutlineArrowLeft} from 'react-icons/ai'
 import { useChatMsgMutation, useLazyGetMsgListQuery } from "@/features/chat/redux/followApi"
-import { useAppSelector } from "@/redux/hooks"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import dayjs from "dayjs"
 import "dayjs/locale/ko" // 한국어 로케일 추가
 import Image from "next/image"
 import { usePostMsgMutation } from "@/features/chat/redux/chattingApi"
 import { Toast } from "primereact/toast"
+import { getMsgList, updateNReadChat } from "@/features/chat/redux"
 
 dayjs.locale("ko")
-const TMessageModal = (props) => {
+const SMessageModal = (props) => {
   // 전달받은 state 함수
   const { visible, setVisible, rowData, stompClient } = props
   const [message, setMessage] = useState("")
   const userInfo = useAppSelector((state) => state.auth.userInfoDetail)
   const token = useAppSelector((state) => state.auth.loginInfo)
-  const [getmessage, { data: msgList }] = useLazyGetMsgListQuery()
-  const [sendMessage] = useChatMsgMutation()
-
-  // const [sendMessage] = usePostMsgMutation()
-
+  // const [getmessage, { data: msgList }] = useLazyGetMsgListQuery()
+  const dispatch = useAppDispatch()
+  const [sendMessage] = usePostMsgMutation()
+  const msgList = useAppSelector((state) => state.chat.msgList)
   const toastRef = useRef<any>(null)
 
   const isCanSubmit = !!message.replace(/ |\n/g, "")
@@ -30,28 +30,54 @@ const TMessageModal = (props) => {
    */
   const scrollRef = useRef<any>()
   const messageRef = useRef<any>()
+  useEffect(() => {
+    const scrollBottom = () => {
+      if (messageRef.current) {
+        scrollRef.current.scrollTop = messageRef.current.scrollHeight
+      }
+    }
+    // 메시지 리스트가 업데이트될 때마다 스크롤을 맨 아래로 이동
+    scrollBottom()
+  }, [visible, msgList])
 
   const [scrollState, setScrollState] = useState(true) // 자동 스크롤 여부
 
+  // useEffect(() => {
+  //   if (rowData && token && userInfo) {
+  //     getmessage({
+  //       token: token.accessToken,
+  //       room_id: rowData.roomId,
+  //     })
+  //   }
+  // }, [rowData, token, userInfo])
+
   useEffect(() => {
-    if (rowData && token && userInfo) {
-      getmessage({
-        token: token.accessToken,
-        room_id: rowData.roomId,
-      })
+    if (token.accessToken && userInfo.uid) {
+      dispatch(
+        getMsgList({
+          token: token.accessToken,
+          room_id: rowData.roomId,
+        })
+      )
     }
-  }, [rowData, token, userInfo])
+  }, [token?.accessToken, userInfo?.uid])
 
   useEffect(() => {
     if (rowData && rowData.not_read_chat > 0) {
-      // 미읽은 채팅이 있을 때 readChat 액션 실행
-      // readChat();
-      console.log("ㅇ여기몇번타나")
       readChat()
     }
   }, [rowData.not_read_chat])
 
-  const readChat = () => {}
+  const readChat = () => {
+    console.log("readChat 있다!!")
+    dispatch(
+      updateNReadChat({
+        roomId: rowData.roomId,
+        message: rowData.last_chat,
+        readYN: 1,
+      })
+    )
+  }
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -68,60 +94,22 @@ const TMessageModal = (props) => {
   // };
 
   const onChatSumbmit = async (msg: string) => {
+    const reduceParticipant = rowData.participant.map((item) => ({
+      nickname: item.nickname,
+      uid: item.uid,
+      user_id: item.user_id,
+    }))
     const msgData = {
       roomId: rowData.roomId,
       // type: chatState.type as RoomType,
-      participant: rowData.participant,
+      participant: reduceParticipant,
       sendUserId: userInfo.uid,
       message: msg,
       // rowData.participant[0].uid <-- isMe
       notRead: rowData.participant[0].uid === userInfo.uid ? 0 : rowData.participant.length,
     }
     sendMessage({ token: token.accessToken, formData: msgData })
-
-    // sendAlert(msgData)
   }
-
-  // roomID = 보내고자하는 대상 , 유저에게 DM을 발송
-  const sendAlert = async (msg) => {
-    // console.log(msg)
-    if (stompClient) {
-      await stompClient.send(
-        `/app/dm/` + rowData.participant[0].uid,
-        {},
-        JSON.stringify(
-          //보내는사람정보 + 메시지, 로그인 유저가 ...메시지를 특정방에 보냄
-          {
-            msg: message,
-          }
-        )
-      )
-      console.log("stompClient", stompClient)
-    }
-  }
-
-  //구독및응답
-  // useEffect(() => {
-  //   if (stompClient && userInfo) {
-  //     stompClient.subscribe(
-  //       `/topic/dm/` + userInfo.uid,
-  //       (message: { body: string }) => {
-  //         const subscribedMessage = JSON.parse(message.body)
-  //         toastRef.current.show({
-  //           severity: "info",
-  //           summary: "메시지가 도착했습니다. ",
-  //           life: 2000,
-  //         })
-  //         // setMsgs((prevMsgs) => [...prevMsgs, subscribedMessage.chat])
-
-  //         console.log("받은메시지", subscribedMessage)
-  //       },
-  //       {
-  //         id: `/topic/dm/` + userInfo.uid,
-  //       }
-  //     )
-  //   }
-  // }, [stompClient])
 
   const onMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     event.preventDefault()
@@ -160,19 +148,19 @@ const TMessageModal = (props) => {
         </button>
         <span>{rowData.participant[0].nickname}</span>
       </header>
-      <main>
+      <main ref={scrollRef} className="chatting_wrapper">
         <div className="msg_wrap" ref={messageRef}>
           {/* {messagesGroupBy} */}
           {msgList && msgList.length > 0 ? (
             msgList.map((msg, index) => {
-              const dateString = msg.crtrDt.replace("T", " ").replace("Z", "")
+              const dateString = msg.crtrDt ? msg.crtrDt.replace("T", " ").replace("Z", "") : null
               var crtrDt = dayjs(dateString)
 
               // 이전 메시지의 crtrDt와 현재 메시지의 crtrDt 비교
               const showSeparator = index === 0 || !crtrDt.isSame(msgList[index - 1].crtrDt, "day")
 
               return (
-                <div key={msg.id}>
+                <div key={msg.id ? msg.id : index}>
                   {showSeparator && (
                     <div className="separator" key={msg.crtrDt}>
                       <span className="date">{crtrDt.format("YYYY년 MM월 DD일 dddd")}</span>
@@ -209,7 +197,13 @@ const TMessageModal = (props) => {
       </main>
       <footer className="jPLVXV">
         <form onSubmit={onSubmit}>
-          <textarea value={message} autoFocus={true} onChange={onMessageChange} onKeyPress={onEnterPress} />
+          <textarea
+            value={message}
+            autoFocus={true}
+            onChange={onMessageChange}
+            onKeyDown={onEnterPress}
+            // onKeyPress={onEnterPress}
+          />
           <button className={btnClassName} type="submit">
             전송
           </button>
@@ -221,4 +215,4 @@ const TMessageModal = (props) => {
   )
 }
 
-export default TMessageModal
+export default SMessageModal

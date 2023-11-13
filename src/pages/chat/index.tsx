@@ -1,4 +1,4 @@
-import { ChatContainer, ChattingContainer } from "@/features/chat/components"
+import { ChattingContainer } from "@/features/chat/components"
 import dynamic from "next/dynamic"
 
 const ChatPage = () => {
