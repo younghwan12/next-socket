@@ -8,4 +8,6 @@ export const initialState = {
   msgList: <any>[],
   fetchMsgListErrors: <any>null,
   fetchMsgListLoading: false,
+
+  inChatRoom: false,
 }

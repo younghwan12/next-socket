@@ -7,12 +7,12 @@ import "dayjs/locale/ko" // 한국어 로케일 추가
 import Image from "next/image"
 import { usePostMsgMutation } from "@/features/chat/redux/chattingApi"
 import { Toast } from "primereact/toast"
-import { getMsgList, updateNReadChat } from "@/features/chat/redux"
+import { addSubscribedMessage, getMsgList, markAllMessagesAsRead, updateNReadChat } from "@/features/chat/redux"
 
 dayjs.locale("ko")
 const SMessageModal = (props) => {
   // 전달받은 state 함수
-  const { visible, setVisible, rowData, stompClient } = props
+  const { visible, setVisible, rowData } = props
   const [message, setMessage] = useState("")
   const userInfo = useAppSelector((state) => state.auth.userInfoDetail)
   const token = useAppSelector((state) => state.auth.loginInfo)
@@ -24,6 +24,35 @@ const SMessageModal = (props) => {
 
   const isCanSubmit = !!message.replace(/ |\n/g, "")
   const btnClassName = isCanSubmit ? "canSubmit" : "cannotSubmit"
+
+  // useEffect(() => {
+  //   if (stompClient && userInfo) {
+  //     stompClient.subscribe(
+  //       `/topic/dm/` + userInfo.uid,
+  //       (message: { body: string }) => {
+  //         const subscribedMessage = JSON.parse(message.body)
+  //         // 메시지를 구분하여 로그에 찍기
+  //         const now = dayjs().format("YYYY-MM-DD HH:mm:ss")
+  //         if (subscribedMessage.sendUserId === userInfo.uid) {
+  //           console.log(">>>>>>>>>>>>>>>>", subscribedMessage)
+  //         } else {
+  //           console.log("<<<<<<<<<<<<<<<<<<<", subscribedMessage)
+  //         }
+  //         // dispatch(
+  //         //   updateNReadChat({
+  //         //     roomId: rowData.roomId,
+  //         //     message: rowData.last_chat,
+  //         //     readYN: 1,
+  //         //   })
+  //         // )
+  //         dispatch(markAllMessagesAsRead())
+  //       },
+  //       {
+  //         id: `/topic/dm/` + userInfo.uid,
+  //       }
+  //     )
+  //   }
+  // }, [stompClient])
 
   /**
    * 스크롤

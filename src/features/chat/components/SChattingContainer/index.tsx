@@ -1,6 +1,6 @@
 import SMessageModal from "@/component/SMessageModal"
 import { config } from "@/config/config"
-import { addSubscribedMessage, getChatRoomList, updateNReadChat } from "@/features/chat/redux"
+import { addSubscribedMessage, getChatRoomList, markAllMessagesAsRead, updateNReadChat } from "@/features/chat/redux"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
@@ -8,11 +8,12 @@ import SockJS from "sockjs-client"
 import Stomp from "stompjs"
 import { useLazyGetUserInfoQuery } from "../../redux/chattingApi"
 import dayjs from "dayjs"
+import { Button } from "antd"
 
 const SChattingContainer = () => {
   const userInfo = useAppSelector((state) => state.auth.userInfoDetail)
   const token = useAppSelector((state) => state.auth.loginInfo)
-  const toastRef = useRef<any>(null)
+
   const dispatch = useAppDispatch()
   const chattingRoom = useAppSelector((state) => state.chat.chatRoomList)
   const msgList = useAppSelector((state) => state.chat.msgList)
@@ -96,6 +97,11 @@ const SChattingContainer = () => {
     }
   }, [])
 
+  useEffect(() => {
+    inRoom.current = visible
+  }, [visible])
+
+  const inRoom = useRef<boolean>(false)
   //구독및응답
   useEffect(() => {
     if (stompClient && userInfo) {
@@ -103,31 +109,94 @@ const SChattingContainer = () => {
         `/topic/dm/` + userInfo.uid,
         (message: { body: string }) => {
           const subscribedMessage = JSON.parse(message.body)
-          // 메시지를 구분하여 로그에 찍기
           const now = dayjs().format("YYYY-MM-DD HH:mm:ss")
-          if (subscribedMessage.sendUserId === userInfo.uid) {
-            console.log("보낸메시지 :", subscribedMessage)
-            dispatch(
-              updateNReadChat({
-                roomId: subscribedMessage.roomId,
-                message: subscribedMessage.message,
-                not_read_chat: 0,
-              })
-            )
+          // 메시지를 구분하여 로그에 찍기
+
+          // 보내는사람
+          const sendUser = subscribedMessage.sendUserId === userInfo.uid
+          // 방안에서받는사람
+          const receiveInRoom = !sendUser && inRoom.current
+
+          // if (subscribedMessage?.chat?.nickname == "알람") {
+          //   dispatch(markAllMessagesAsRead())
+          // } else {
+          //   // 방안에 있을시
+          //   // if (inRoom.current) {
+          //   //   dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now, notRead: 0 }))
+          //   //   dispatch(
+          //   //     updateNReadChat({
+          //   //       roomId: rowData.roomId,
+          //   //       message: rowData.last_chat,
+          //   //       readYN: 1,
+          //   //     })
+          //   //   )
+          //   // } else {
+          //   if (subscribedMessage.sendUserId === userInfo.uid) {
+          //     // console.log("보낸사람 :", subscribedMessage)
+          //     if (inRoom.current) {
+          //       console.log("보낸사람인데 방안에있다")
+          //     } else {
+          //       console.log("보낸사람인데 방안에없다")
+          //     }
+          //     dispatch(
+          //       updateNReadChat({
+          //         roomId: subscribedMessage.roomId,
+          //         message: subscribedMessage.message,
+          //         not_read_chat: 0,
+          //       })
+          //     )
+          //   } else {
+          //     // console.log("받은사람 :", subscribedMessage)
+          //     if (inRoom.current) {
+          //       console.log("받는사람인데 방안에있다")
+          //     } else {
+          //       console.log("받는사람인데 방안에없다.")
+          //     }
+          //     dispatch(
+          //       updateNReadChat({
+          //         roomId: subscribedMessage.roomId,
+          //         message: subscribedMessage.message,
+          //         not_read_chat: 1,
+          //       })
+          //     )
+          //   }
+          //   dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now, notRead: 1 }))
+          //   // }
+          // }
+          if (subscribedMessage?.chat?.nickname == "알람") {
+            dispatch(markAllMessagesAsRead())
           } else {
-            console.log("받은메시지 :", subscribedMessage)
-            dispatch(
-              updateNReadChat({
-                roomId: subscribedMessage.roomId,
-                message: subscribedMessage.message,
-                not_read_chat: 1,
-              })
-            )
+            // 받는 사람이 방에 있다면
+            // if (receiveInRoom) {
+            //   console.log("여기안타나?")
+            //   dispatch(markAllMessagesAsRead())
+            //   dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now, notRead: 0 }))
+            // } else {
+            // 보내는 사람만 방에 있다면
+            if (subscribedMessage.sendUserId === userInfo.uid) {
+              dispatch(
+                updateNReadChat({
+                  roomId: subscribedMessage.roomId,
+                  message: subscribedMessage.message,
+                  not_read_chat: 0,
+                })
+              )
+              dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now, notRead: 1 }))
+            } else {
+              dispatch(
+                updateNReadChat({
+                  roomId: subscribedMessage.roomId,
+                  message: subscribedMessage.message,
+                  not_read_chat: 1,
+                })
+              )
+              dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now, notRead: 0 }))
+            }
           }
-          dispatch(addSubscribedMessage({ ...subscribedMessage, crtrDt: now }))
+          // }
+          // }
         },
         {
-          // id: `/topic/dm/` + userInfo.uid,
           id: `/topic/dm/`,
         }
       )
@@ -151,13 +220,13 @@ const SChattingContainer = () => {
                       height={56}
                       alt="profile"
                       src={
-                        room.participant[0].profileResource
-                          ? `data:image/jpeg;base64, ${room.participant[0].profileResource}`
+                        room.participant[0]?.profileResource
+                          ? `data:image/jpeg;base64, ${room.participant[0]?.profileResource}`
                           : "/chat/base_profile.jpg"
                       }
                     ></Image>
                     <p className="room-block-top">
-                      <b>{room.participant[0].nickname}</b>
+                      <b>{room.participant[0]?.nickname}</b>
                       <span>{room.updDt}</span>
                     </p>
                     <p className="preview">
@@ -175,7 +244,7 @@ const SChattingContainer = () => {
         </div>
         <div className="ml-5 w-[63%]">
           {visible ? (
-            <SMessageModal visible={visible} setVisible={setVisible} rowData={rowData} stompClient={stompClient} />
+            <SMessageModal visible={visible} setVisible={setVisible} rowData={rowData} />
           ) : (
             <div>선택된 채팅방이 없습니다.</div>
           )}

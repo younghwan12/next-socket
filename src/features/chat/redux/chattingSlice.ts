@@ -8,17 +8,19 @@ export const chattingSlice = createSlice({
   reducers: {
     addSubscribedMessage: (
       state,
-      action: PayloadAction<{ roomId: number; sendUserId: number; message: string; crtrDt: string }>
+      action: PayloadAction<{ roomId: number; notRead: number; sendUserId: number; message: string; crtrDt: string }>
     ) => {
-      const { roomId, sendUserId, message, crtrDt } = action.payload
+      const { roomId, sendUserId, message, crtrDt, notRead } = action.payload
       const newMessage = {
         message,
-        not_read: 1,
+        not_read: notRead,
         room_id: roomId,
         send_user_id: sendUserId,
         crtrDt: crtrDt,
       }
-      state.msgList = [...state.msgList, newMessage]
+      if (state.msgList) {
+        state.msgList = [...state.msgList, newMessage]
+      }
     },
     updateNReadChat: (
       state,
@@ -35,6 +37,12 @@ export const chattingSlice = createSlice({
         }
         return room
       })
+    },
+    markAllMessagesAsRead: (state) => {
+      // Use map to create a new array with updated not_read values
+      if (state.msgList) {
+        state.msgList = state.msgList.map((message) => ({ ...message, not_read: 0 }))
+      }
     },
   },
   extraReducers: (builder) => {
@@ -65,6 +73,6 @@ export const chattingSlice = createSlice({
   },
 })
 
-export const { addSubscribedMessage, updateNReadChat } = chattingSlice.actions
+export const { addSubscribedMessage, updateNReadChat, markAllMessagesAsRead } = chattingSlice.actions
 
 export default chattingSlice.reducer
